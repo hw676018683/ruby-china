@@ -21,6 +21,21 @@ class User
       end
     end
 
+    def find_or_create_for_skylark response
+      uid = response['uid'].to_s
+      data = response['info']
+
+      user = User.where('authorizations.provider' => 'skylark', 'authorizations.uid' => uid).first
+      return user if user
+      user = User.new name: data['name'],
+                      login: data['name'],
+                      password: Devise.friendly_token[0, 20],
+                      avatar: data['headimgurl'],
+                      email: "skylark+#{uid}@example.com"
+      user.save && user.authorizations << Authorization.new(provider: 'skylark', uid: uid)
+      user
+    end
+
     def new_from_provider_data(provider, uid, data)
       User.new do |user|
         if data['email'].present? && !User.where(email: data['email']).exists?

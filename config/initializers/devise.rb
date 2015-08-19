@@ -175,6 +175,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists. Default is [:html]
   # config.navigational_formats = [:html, :iphone]
   config.omniauth :github, Setting.github_token, Setting.github_secret
+  config.omniauth :skylark, Setting.skylark.client_id, Setting.skylark.client_secret, provider_ignores_state: true
   # config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid'
 
   # ==> Warden configuration

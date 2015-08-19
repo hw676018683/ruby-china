@@ -88,9 +88,9 @@ class User
 
   ACCESSABLE_ATTRS = [:name, :email_public, :location, :company, :bio, :website, :github, :twitter, :tagline, :avatar, :by, :current_password, :password, :password_confirmation]
 
-  validates :login, format: { with: ALLOW_LOGIN_CHARS_REGEXP, message: '只允许数字、大小写字母和下划线' },
-                    length: { in: 3..20 }, presence: true,
-                    uniqueness: { case_sensitive: false }
+  # validates :login, format: { with: ALLOW_LOGIN_CHARS_REGEXP, message: '只允许数字、大小写字母和下划线' },
+  #                   length: { in: 3..20 }, presence: true,
+  #                   uniqueness: { case_sensitive: false }
 
   has_and_belongs_to_many :following, class_name: 'User', inverse_of: :followers
   has_and_belongs_to_many :followers, class_name: 'User', inverse_of: :following

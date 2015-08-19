@@ -22,6 +22,17 @@ module Users
       end
     end
 
+    def skylark
+      @user = User.find_or_create_for_skylark(env["omniauth.auth"])
+
+      if @user.persisted?
+        flash[:notice] = "用Skylark登陆成功。"
+        sign_in_and_redirect @user, event: :authentication
+      else
+        redirect_to new_user_registration_url
+      end
+    end
+
     provides_callback_for :github, :twitter, :douban, :google
 
     # This is solution for existing accout want bind Google login but current_user is always nil

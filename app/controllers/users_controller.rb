@@ -115,6 +115,6 @@ class UsersController < ApplicationController
       return
     end
 
-    @user = User.find_login(params[:id])
+    @user = User.find(params[:id])
   end
 end

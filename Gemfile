@@ -46,6 +46,7 @@ gem 'will_paginate', '3.0.7'
 # 三方平台 OAuth 验证登陆
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-github', '~> 1.1.0'
+gem 'omniauth-skylark-oauth2', github: 'hw676018683/omniauth-skylark-oauth2'
 
 # permission
 gem 'cancancan', '~> 1.8.4'
@@ -134,4 +135,6 @@ group :development, :test do
   # Better Errors
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry'
+  gem 'pry-byebug', '2.0.0'
 end
